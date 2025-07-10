@@ -1,0 +1,720 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+
+
+:root {
+  --primary-color: #6900B2;
+  --secondary-color: #2d033b;
+  --light-color: #f3f3f3;
+  --text-dark: #222;
+  --text-light: #eee;
+  --gradient: linear-gradient(135deg, #7b0acb, #6900B2, #2d033b, #2d033b, #2d033b, #1c0224, #120118);
+  --font-heading: 'Zen Dots', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: var(--light-color);
+  color: var(--text-dark);
+}
+
+.app-header {
+  position: relative;
+  background: var(--gradient);
+  padding-bottom: .8rem;
+  padding: 1rem 0 2rem;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  color: var(--text-light);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.app-header a {
+  text-decoration: underline;
+  color: var(--text-light);
+}
+
+h1, h2, .app-header {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h1, h2 {
+  color: var(--primary-color);
+}
+
+h1 {
+  width: 100%;
+  text-shadow:  2px 2px 2px #2e004f, 0px 0px 3em var(--secondary-color), 0px 0px 0.2em #4b0082, 0px 0px 2.5em var(--text-dark), 0px 0px 1px #1c1c1c, 0px 0px 2.5em var(--text-dark);
+  justify-self: center;
+  align-self: center;
+  margin: 0 auto;
+  padding-top: 1rem;
+  margin-bottom: 3vh;
+  position: relative;
+}
+
+.header-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.app-title {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  letter-spacing: 1px;
+}
+
+.app-subtitle {
+  font-size: 1.2rem;
+  margin: 0.5rem 0 0;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-light);
+  opacity: 0.9;
+}
+
+.task-container {
+  width: 50vw;
+  margin: 0 auto;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #4b0082;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ── Contenedor principal ─────────────────────────────────────── */
+.app-container {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.empty-state {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+  margin-top: 2rem;
+}
+
+/* ── Estilos de lista de tareas ───────────────────────────────── */
+.task-list {
+  flex-direction: column;
+  display: flex;
+  gap: .8em;
+  max-width: 50vw;
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .task-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.task-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.task-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.task-item h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+}
+
+.task-item p {
+  margin: 0 0 1rem;
+  line-height: 1.4;
+  color: #555;
+}
+
+/* ── Botones en cada tarjeta ──────────────────────────────────── */
+.task-item .actions {
+  display: flex;
+  gap: 0.5rem;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+}
+
+.task-item .actions button {
+  background: transparent;
+  color: var(--secondary-color);
+  padding: 0.4rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: all .2s ease-in-out;
+}
+
+.task-item .actions button:hover {
+  box-shadow: 2px 2px 1px rgba(0,0,0,0.15)
+}
+
+.task-item .actions button:last-child {
+  background:var(--primary-color);
+  color: var(--text-light);
+}
+
+.task-item .actions button:last-child:hover {
+  background:  #ff0000;
+}
+
+.task-item.done {
+  background:  linear-gradient(to right,  #d1f7d6, #f0fff2);
+  border-left: 6px solid #4CAF50;
+  opacity: 0.8;
+}
+
+.task-item.done h3 {
+  text-decoration: line-through;
+  color: #333;
+}
+
+.task-item.done p {
+  color: #666;
+}
+
+.task-title {
+  font-size: 1.05rem;
+  color: var(--secondary-color);
+}
+
+.task-item.done {
+  text-decoration: line-through;
+}
+
+.task-meta {
+  font-size: 0.75rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.checkbox-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+  padding-right: 3rem;
+}
+
+.checkbox-title input[type=""] {
+  accent-color: var(--primary-color);
+  transform: scale(1.3);
+  cursor: pointer;
+}
+
+.task-item.done .checkbox-title span {
+  text-decoration: line-through;
+  color: #555;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--secondary-color);
+  font-size: 1rem;
+  position: relative;
+}
+
+/* Ocultamos el checkbox nativo */
+.custom-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Caja personalizada */
+.checkmark {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--primary-color);
+  background: white;
+  border-radius: 6px;
+  display: inline-block;
+  position: relative;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Animación de "✔" */
+.checkmark::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: scale(0) rotate(45deg);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Cuando está marcado, cambia color y muestra el ✔ animado */
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+  background-color: var(--primary-color);
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
+  transform: scale(1) rotate(45deg);
+  opacity: 1;
+}
+
+/* ── Mensajes de estado y loaders ─────────────────────────────── */
+.message {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.message--error {
+  background: #ffe6e6;
+  color: #cc0000;
+}
+
+.message--success {
+  background: #e6ffe6;
+  color: #00aa0e;
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+}
+
+.floating-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.modal.fade-in {
+  animation: modalFadeIn 0.3s ease forwards;
+}
+
+.modal.fade-out {
+  animation: modalFadeOut 0.3s ease forwards;
+}
+
+.confirm-btn {
+  background: #d00000;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: #ccc;
+  color: #222;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.confirm-btn:hover {
+  background: #a10000;
+}
+
+.cancel-btn:hover {
+  background: #999;
+}
+
+.footer {
+  background: var(--gradient);
+  color: var(--text-light);
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 4rem;
+  font-family: 'Segoe UI', sans-serif; 
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+
+.footer-columns h4 {
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+  color: var(--text-light);
+  font-weight: 300;
+}
+
+.footer-columns p, .footer-columns a {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin: 0.2rem 0;
+  text-decoration: none;
+}
+
+.footer-columns a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.footer-columns a:hover {
+  text-decoration: underline;
+}
+
+.footer-columns a:hover svg {
+  transform: scale(1.2);
+  fill: white;
+}
+
+.footer-columns a svg {
+  transition: transform 0.2s ease;
+}
+
+.footer-bottom p {
+  margin-top: 45px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .task-container,
+  .task-list,
+  .task-item {
+    width: 80vw;
+    max-width: 90vw;
+  }
+
+  .task-item {
+    padding: 1rem;
+  }
+
+  .app-title {
+    font-size: 2.4rem;
+  }
+
+  .app-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .task-title {
+    font-size: 1.1rem;
+  }
+
+  .floating-button {
+    width: 58px;
+    height: 58px;
+    font-size: 1.6rem;
+    bottom: 1.8rem;
+    right: 1.8rem;
+  }
+
+  .footer-columns {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: left;
+    gap: 2rem;
+  }
+
+  .footer-columns h4 {
+    font-size: 1.1rem;
+  }
+
+  .footer-columns a, 
+  .footer-columns p {
+    font-size: 0.9rem;
+  }
+
+  .footer-columns a svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer-bottom p {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Formulario */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  /* Inputs */
+  input, textarea {
+    font-size: 1rem;
+  }
+
+  /* Botones */
+  button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+
+  /* Acciones dentro de cada tarea */
+  .task-item .actions {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 0.4rem;
+    margin-top: 1rem;
+  }
+  
+  .task-container,
+  .task-list,
+  .task-item {
+    width: 90vw;
+    max-width: 100%;
+  }
+
+  .task-item {
+    padding: .8rem 0.8rem;
+  }
+
+  .task-item p {
+    margin-top: .4rem;
+  }
+
+  .task-item .actions {
+    position: static;
+    margin-top: .2rem;
+    justify-content: flex-end;
+  }
+
+  .custom-checkbox {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .app-title {
+    font-size: 2rem;
+  }
+
+  .app-subtitle {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .task-title {
+    font-size: 1rem;
+  }
+
+  .floating-button {
+    width: 55px;
+    height: 55px;
+    font-size: 1.4rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  /* Footer responsive para mobile */
+  .footer-columns {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .footer-columns h4 {
+    font-size: 1rem;
+  }
+
+  .footer-columns p,
+  .footer-columns a {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .footer-bottom {
+    margin-top: 2rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.7rem;
+    line-height: 1.3;
+    padding: 0 1rem;
+  }
+
+  .footer-columns a {
+    justify-content: center;
+    font-size: 0.85rem;
+  }
+
+  .footer-columns a svg {
+    width: 18px;
+    height: 18px;
+  }
+}

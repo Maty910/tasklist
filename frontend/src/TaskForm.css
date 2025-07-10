@@ -1,0 +1,22 @@
+.form-container {
+  max-width: 100%;
+}
+
+.form-container input,
+.form-container textarea {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.form-container button[type="submit"] {
+  background: var(--secondary-color);
+  margin-top: 3px ;
+}
+
+.form-container button[type="submit"]:hover {
+  background-color: var(--primary-color);
+}
+
+.form-container button[type="button"] {
+  background: #aaa;
+}
