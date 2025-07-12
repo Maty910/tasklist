@@ -16,22 +16,81 @@ function App () {
   const [showModal, setShowModal] = useState(false)
   const [taskToDelete, setTaskToDelete] = useState(null)
 
-  const loadTasks = async () => {
-    setError(null)
-    setLoading(true)
-    try {
-      const data = await getTasks()
-      setTasks(data)
-    } catch (err) {
-      setError(err.message)
-    } finally {
-      setLoading(false)
-    }
-  }
+  // Usar solo con el backend
+  // const loadTasks = async () => {
+  //   setError(null)
+  //   setLoading(true)
+  //   try {
+  //     const data = await getTasks()
+  //     setTasks(data)
+  //   } catch (err) {
+  //     setError(err.message)
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // }
 
-  useEffect(() =>{
-    loadTasks()
-  }, [])
+  // Usar solo con el backend
+  // useEffect(() =>{
+  //   loadTasks()
+  // }, [])
+
+  // useEffect para simular tareas en Netlify
+  useEffect(() => {
+  // Simulamos datos para poder mostrar la app en producción sin backend
+  const mockTasks = [
+    {
+      id: 1,
+      title: 'Estudiar React',
+      description: 'Repasar useEffect y componentes controlados',
+      done: false,
+      createdAt: '2025-07-08T10:00:00Z'
+    },
+    {
+      id: 2,
+      title: 'Preparar entrevista técnica',
+      description: 'Revisar preguntas comunes y practicar una API REST',
+      done: true,
+      createdAt: '2025-07-06T15:30:00Z'
+    },
+    {
+      id: 3,
+      title: 'Leer documentación de SQLite',
+      description: 'Entender cómo funciona en Node.js y sus limitaciones',
+      done: false,
+      createdAt: '2025-07-07T09:20:00Z'
+    },
+    {
+      id: 4,
+      title: 'Subir proyecto a GitHub',
+      description: 'Agregar README con capturas y descripción del proyecto',
+      done: true,
+      createdAt: '2025-07-09T14:10:00Z'
+    },
+    {
+      id: 5,
+      title: 'Deploy del frontend en Netlify',
+      description: 'Configurar build y probar funcionamiento',
+      done: false,
+      createdAt: '2025-07-10T11:00:00Z'
+    },
+    {
+      id: 6,
+      title: 'Actualizar CV',
+      description: 'Agregar experiencia práctica con React y Node.js',
+      done: false,
+      createdAt: '2025-07-11T08:45:00Z'
+    },
+    {
+      id: 7,
+      title: 'Escribir post en LinkedIn',
+      description: 'Mostrar el proceso del proyecto y link al deploy',
+      done: false,
+      createdAt: '2025-07-11T17:15:00Z'
+    }
+  ]
+  setTasks(mockTasks)
+}, [])
 
   const handleCreate = async (data) => {
     setError(null)
