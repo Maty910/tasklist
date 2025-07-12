@@ -1,5 +1,19 @@
 # TaskList - Challenge Academia ForIT 2025
 
+## Screenshots Desktop Web:
+
+<img width="850" height="auto" alt="image" src="https://github.com/user-attachments/assets/61d4e09f-391d-42ef-abde-e49b21667fb6" />
+
+<img width="850" height="auto" alt="image" src="https://github.com/user-attachments/assets/0a424226-0ed2-4a16-956d-6dcb3a2fb413" />
+
+## Screenshots Mobile:
+
+<img width="auto" height="450" alt="image" src="https://github.com/user-attachments/assets/3b16a7d6-1cc4-4143-bef8-04b8bfa5e2c0" />
+
+<img width="auto" height="450" alt="image" src="https://github.com/user-attachments/assets/64cfb15f-af05-4a1a-bc72-42f10941d71a" />
+
+<img width="auto" height="450" alt="image" src="https://github.com/user-attachments/assets/dfb0a8a1-6a7c-434b-b27d-ad98de8d0199" />
+
 ## Descripción
 
 Aplicación de lista de tareas desarrollada como parte del **Challenge de ingreso a Academia ForIT 2025**. Demuestra conocimientos básicos de:
