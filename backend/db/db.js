@@ -1,9 +1,13 @@
+require('dotenv').config()
+
 const sqlite3 = require('sqlite3').verbose()
 const path = require('path')
 
-const dbPath = path.resolve(__dirname, 'tasks.db')
+const dbFile = process.env.DB_PATH
+  ? path.resolve(__dirname, process.env.DB_PATH)
+  : path.resolve(__dirname, 'tasks.db')
 
-const db = new sqlite3.Database(dbPath, (err) => {
+const db = new sqlite3.Database(dbFile, (err) => {
   if (err) {
     console.error('❌ Error al conectar con SQLite:', err.message)
   } else {

@@ -1,7 +1,7 @@
-const API_URL = 'http://localhost:3001/api/tasks'
+const API_URL = import.meta.env.VITE_API_URL
 
 export async function getTasks () {
-  const res = await fetch(API_URL, {
+  const res = await fetch(`${API_URL}/tasks`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   })
@@ -13,7 +13,7 @@ export async function getTasks () {
 }
 
 export async function createTask (task) {
-  const res = await fetch(API_URL, {
+  const res = await fetch(`${API_URL}/tasks`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(task)
