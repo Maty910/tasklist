@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getTasks, createTask, updateTask, deleteTask, toggleTaskDone } from './api/api'
+import { /* getTasks, */ createTask, updateTask, deleteTask, toggleTaskDone } from './api/api'
 import TaskForm from './components/TaskForm'
 import DeleteModal from './components/DeleteModal'
 import Header from './components/Header'
@@ -98,7 +98,7 @@ function App () {
     try {
       await createTask(data)
       setSuccess('¡Tarea creada con éxito!')
-      loadTasks()
+      // loadTasks()
     } catch (err) {
       setError(err.message)
     } finally {
@@ -114,7 +114,7 @@ function App () {
       await updateTask(editingTask.id, data)
       setSuccess('¡Tarea actualizada!')
       setEditingTask(null)
-      loadTasks()
+      // loadTasks()
     } catch (err) {
       setError(err.message)
     } finally {
@@ -127,7 +127,7 @@ function App () {
     try {
       await deleteTask(taskToDelete)
       setSuccess('Tarea eliminada')
-      loadTasks()
+      // loadTasks()
     } catch (err) {
       setError(err.message)
     } finally {
