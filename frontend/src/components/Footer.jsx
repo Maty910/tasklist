@@ -25,8 +25,7 @@ function Footer () {
           GitHub
           </a>
           <a 
-
-            href="https://www.linkedin.com/in/tu-perfil" 
+            href="https://www.linkedin.com/in/matias-chacon-t934/" 
             target="_blank" 
             rel="noreferrer"
           >
