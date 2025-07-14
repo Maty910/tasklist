@@ -123,7 +123,7 @@ La app se servirá en `http://localhost:5173` (o el puerto que indique Vite).
 * **Frontend:** En `frontend/.env` define:
 
   ```ini
-  VITE_API_URL=http://localhost:3000/api
+  VITE_API_URL=http://localhost:3001/api
   ```
 
 ---
