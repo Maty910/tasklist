@@ -1,4 +1,140 @@
-# TaskList - Challenge Academia ForIT 2025
+# TaskList App 📝
+
+Una aplicación full‑stack para gestionar tareas, creada como parte del challenge de ingreso a ForIT.
+
+---
+
+## 📖 Descripción
+
+TaskList App te permite:
+- **Crear**, **leer**, **actualizar** y **eliminar** tareas (CRUD).
+- Marcar tareas como completadas (`done` boolean).
+- Persistir datos en **SQLite3** con Node.js + Express.
+- Interfaz en **React** (Vite) con componentes reutilizables.
+- Despliegue del frontend en Netlify usando datos mock.
+
+---
+
+## 📂 Estructura del proyecto
+
+```
+tasklist/
+├── backend/
+│   ├── db/
+│   │   └── db.js             # Conexión y creación de tabla SQLite
+│   ├── utils/
+│   │   └── validators.js     # Validaciones de título/descr.
+│   ├── .env.example          # Ejemplo de variables de entorno
+│   ├── index.js              # Servidor Express y rutas /api/tasks
+│   └── package.json
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── api/
+│   │   │   └── api.js        # Funciones fetch a la API
+│   │   ├── components/
+│   │   │   ├── Header.jsx
+│   │   │   ├── TaskForm.jsx
+│   │   │   ├── TaskList.jsx
+│   │   │   ├── TaskItem.jsx
+│   │   │   ├── DeleteModal.jsx
+│   │   │   ├── FloatingButton.jsx
+│   │   │   └── Footer.jsx
+│   │   ├── App.jsx
+│   │   └── index.css
+│   ├── .env.example          # Ejemplo de VITE_API_URL
+│   └── package.json
+├── .gitignore
+└── README.md
+```
+
+---
+
+## 🚀 Instalación y ejecución local
+
+### Backend
+
+1. Entra a la carpeta `backend/`  
+2. Crea un archivo `.env` copiando el ejemplo:
+   ```ini
+   PORT=3001
+   DB_PATH=tasks.db
+   ```
+3. Instala dependencias:
+   ```bash
+   pnpm install
+   ```
+4. Arranca el servidor:
+   ```bash
+   pnpm dev
+   ```
+   La API quedará disponible en `http://localhost:3001/api/tasks`.
+
+### Frontend
+
+1. Entra a la carpeta `frontend/`  
+2. Crea un archivo `.env` copiando el ejemplo:
+   ```ini
+   VITE_API_URL=http://localhost:3001/api
+   ```
+3. Instala dependencias:
+   ```bash
+   pnpm install
+   ```
+4. Arranca la app:
+   ```bash
+   pnpm dev
+   ```
+   La interfaz se abrirá en `http://localhost:5173`.
+
+---
+
+## 🌐 Despliegue
+
+- **Frontend mock** (sin backend):  
+  ![Tasklist](https://tasklistmaty.netlify.app/) 
+
+---
+
+## 📝 Endpoints de la API
+
+Todas las rutas usan el prefijo `/api/tasks`:
+
+| Método | Ruta                     | Descripción                            |
+| ------ | ------------------------ | -------------------------------------- |
+| GET    | `/api/tasks`             | Obtener lista de todas las tareas      |
+| POST   | `/api/tasks`             | Crear nueva tarea                      |
+| PUT    | `/api/tasks/:id`         | Actualizar título/descr. de una tarea  |
+| DELETE | `/api/tasks/:id`         | Borrar una tarea                       |
+| PATCH  | `/api/tasks/:id/toggle`  | Alternar estado `done` de la tarea     |
+
+---
+
+## 💾 Variables de entorno
+
+### backend/.env.example
+```ini
+PORT=3001
+DB_PATH=tasks.db
+```
+
+### frontend/.env.example
+```ini
+VITE_API_URL=http://localhost:3001/api
+```
+
+---
+
+## 🛠️ Tecnologías
+
+- **Backend**: Node.js, Express, sqlite3  
+- **Frontend**: React, Vite, fetch API  
+- **Estilos**: CSS moderno con custom properties  
+- **Deploy**: Netlify (frontend mock)
+
+---
+
+## 🖼️ Capturas de pantalla
 
 ## Screenshots Desktop Web:
 
@@ -14,140 +150,26 @@
 
 <img width="auto" height="450" alt="image" src="https://github.com/user-attachments/assets/dfb0a8a1-6a7c-434b-b27d-ad98de8d0199" />
 
-## Descripción
-
-Aplicación de lista de tareas desarrollada como parte del **Challenge de ingreso a Academia ForIT 2025**. Demuestra conocimientos básicos de:
-
-* **Git**
-* **JavaScript**
-* **Node.js** (Express)
-* **React** (Vite)
-* **SQLite3** (persistencia opcional en backend)
-
 ---
 
-## Estructura del repositorio
-
-```
-/ (raíz)
-├── backend/           # Servidor API con Express
-├── frontend/          # App frontend con React y Vite
-├── netlify.toml       # Configuración de deploy en Netlify
-├── .gitignore
-├── package.json       # Configuración monorepo básica
-└── pnpm-lock.yaml     # Lockfile de dependencias
-```
-
----
-
-## Descripción del Challenge
-
-**Objetivo:** Crear una aplicación básica de lista de tareas que demuestre:
-
-* Uso de Git en un proyecto Node.js
-* Conocimientos de Express y creación de endpoints REST:
-
-  * GET `/api/tasks`
-  * POST `/api/tasks`
-  * PUT `/api/tasks/:id`
-  * DELETE `/api/tasks/:id`
-* Almacenamiento en memoria (o SQLite3 opcional)
-* Manejo básico de errores
-* React con Vite y Hooks
-* Componentes:
-
-  * `TaskList` - Lista de tareas
-  * `TaskItem` - Elemento individual
-  * `TaskForm` - Formulario de crear/editar
-* Consumo de la API con `fetch`
-* Variables de entorno configuradas
-* CSS básico para estilos
-
-**Bonus implementados (opcionales):**
-
-* Persistencia con SQLite3 en el backend
-* Validación simple de formularios
-* Separación entre tareas pendientes y completadas
-
----
-
-## Despliegue en Netlify
-
-La app frontend está desplegada en Netlify (solo UI, datos simulados). Podés verla en:
-
-> **URL de deploy:** `[TaskList](https://tasklistmaty.netlify.app/)`
-
----
-
-## Instalación y ejecución local
-
-### Pre-requisitos
-
-* Node.js v16+ (recomendado)
-* npm o yarn
-
-### 1. Clonar el repositorio
+## 📑 Git Flow
 
 ```bash
-git clone https://github.com/Maty910/tasklist.git
-cd tasklist
+git init
+git add .
+git commit -m "feat: backend con SQLite y frontend React"
+git branch -M main
+git remote add origin https://github.com/Maty910/tasklist.git
+git push -u origin main
 ```
-
-### 2. Backend
-
-```bash
-cd backend
-npm install
-npm start
-```
-
-El servidor se levantará en `http://localhost:3001`.
-
-### 3. Frontend
-
-Abrí otra terminal:
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-La app se servirá en `http://localhost:5173` (o el puerto que indique Vite).
 
 ---
 
-## Variables de entorno
+## 🎓 Autor
 
-* **Backend:** Crea un archivo `.env` en `backend/` si necesitas configurar variables (por ejemplo, puerto).
-* **Frontend:** En `frontend/.env` define:
-
-  ```ini
-  VITE_API_URL=http://localhost:3001/api
-  ```
+**Matías Chacón**  
+– Desarrollador Web FullStack  
+[GitHub](https://github.com/Maty910) | [LinkedIn]( https://www.linkedin.com/in/matias-chacon-t934/) | matychacong@gmail.com
 
 ---
-
-## Uso de Git
-
-Se siguió un flujo básico:
-
-1. `git init` en la raíz del repo (monorepo frontend/backend)
-2. Commits claros para cada funcionalidad
-3. Ramas de feature (si correspondiera)
-
----
-
-## Capturas de pantalla
-
-Agrega en `screenshots/` imágenes de la app en funcionamiento:
-
-* Lista de tareas y Formulario de creación/edición
-<img width="1897" height="1080" alt="image" src="https://github.com/user-attachments/assets/82368cfe-ee91-4ecb-b7d7-ecbb068d9eee" />
-
-* Tareas pendientes y Footer
-<img width="1896" height="1080" alt="image" src="https://github.com/user-attachments/assets/f2c824a7-762f-429d-8c1a-0823fd73f29f" />
-
-* Modal eliminación de tarea
-<img width="1897" height="1080" alt="image" src="https://github.com/user-attachments/assets/915919c5-8c9d-40d7-a49e-5e7533bac2ef" />
 
