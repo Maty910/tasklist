@@ -26,7 +26,7 @@ export async function createTask (task) {
 }
 
 export async function updateTask (id, task) {
-  const res = await fetch(`${API_URL}/${id}`, {
+  const res = await fetch(`${API_URL}/tasks/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(task)
@@ -39,14 +39,14 @@ export async function updateTask (id, task) {
 }
 
 export async function deleteTask (id) {
-  const res = await fetch(`${API_URL}/${id}`, {
+  const res = await fetch(`${API_URL}/tasks/${id}`, {
     method: 'DELETE'
   })
   if (!res.ok) throw new Error('Error al eliminar la tarea.')
 }
 
 export async function toggleTaskDone (id) {
-  const res = await fetch(`${API_URL}/${id}/toggle`, {
+  const res = await fetch(`${API_URL}/tasks/${id}/toggle`, {
     method: 'PATCH'
   })
   if (!res.ok) throw new Error('Error al cambiar el estado de la tarea.')
